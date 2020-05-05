@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import SpotifyContainer from "./spotify-container/SpotifyContainer";
+import ShowsContainer from "./shows-container/ShowsContainer";
+import Footer from "./footer/Footer";
+import Header from "./header/Header";
+import VideosContainer from "./videos-container/VideosContainer";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="app-container">
+        <Header></Header>
+        <VideosContainer></VideosContainer>
+        <SpotifyContainer></SpotifyContainer>
+        <ShowsContainer></ShowsContainer>
+        <Footer></Footer>
+      </div>
     </div>
   );
 }
