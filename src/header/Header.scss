@@ -1,0 +1,59 @@
+.Header {
+    position: relative;
+
+    h1 {
+        margin: 0;
+    }
+    .title {
+        font-size: 32px;
+        line-height: 1;
+        margin: 16px;
+        position: absolute;
+        z-index: 1;
+        text-align: center;
+    }
+    .title-container {
+        display: inline-block;
+        position: relative;
+        text-align: center;
+    }
+    .title-jojo,
+    .title-and,
+    .title-the, .title-bullets {
+        color: #ff63b4;
+        text-shadow: 
+            2px 1px 0px black,
+            2px 2px 0px black,
+            2px 3px 0px black,
+            2px 4px 0px black,
+            2px 5px 0px black;
+    }
+    .title-jojo,
+    .title-and {     
+        font-family: 'Neuton', serif;
+    }
+    .title-the, .title-bullets {
+        font-family: 'Permanent Marker', cursive;
+    }
+
+    .title-and {
+        position: relative;
+        font-size: .4em;
+    }
+    .title-the-bullets {
+        text-align: left;
+        transform-origin: top left;
+        transform: skew(2deg, -10deg);
+    }
+    .title-the {
+        font-size: .3em;
+        margin-bottom: -8px;
+    }
+    .title-the-bullets {
+        font-size: 1.3em;
+    }
+
+    .jojo-glitch-image {
+        width: 100%;
+    }
+}
