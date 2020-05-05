@@ -1,0 +1,25 @@
+.SocialMediaList {
+    font-size: 18px;
+    margin-top: 8px;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    li {
+        display: inline-block;
+    }
+
+    a {
+        color: inherit;
+        display: inline-block;
+        padding: 0 6px;
+        &:visited,
+        &:focus,
+        &:active {
+            color: inherit;
+        }
+    }
+}
