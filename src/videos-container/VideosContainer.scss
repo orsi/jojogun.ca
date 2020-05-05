@@ -1,0 +1,17 @@
+.VideosContainer {
+    margin-top: 16px;
+
+    .iframe-container {
+        overflow:hidden;
+        padding-bottom:56.25%;
+        position:relative;
+        height:0;
+    }
+    .iframe-video {
+        left:0;
+        top:0;
+        height:100%;
+        width:100%;
+        position:absolute;
+    }
+}
