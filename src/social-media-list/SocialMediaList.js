@@ -44,8 +44,7 @@ class SocialMediaList extends Component {
             </a>
           </li>
           <li>
-            <a target="_blank"
-            href="mailto:info@jojogun.ca">
+            <a href="mailto:info@jojogun.ca">
               <FontAwesomeIcon icon={faEnvelope} />
             </a>
           </li>
