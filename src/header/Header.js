@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import './Header.scss';
-import JoJoGlitch from './jojo-glitch.gif';
 import SocialMediaList from "../social-media-list/SocialMediaList";
 
 class Header extends Component {
@@ -18,8 +17,6 @@ class Header extends Component {
           </div>
           </div>
         </h1>
-        <img className="jojo-glitch-image" src={JoJoGlitch} />
-
       </header>
     );
   }
