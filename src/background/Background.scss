@@ -46,132 +46,98 @@
         left: 71%;
     }
 
-    $randomNumber1: random(10);
-    $randomNumber2: random(10);
-    $randomNumber3: random(10);
-    $randomNumber4: random(10);
-    $randomNumber5: random(10);
-    $randomNumber6: random(10);
-    .background-container {
-        animation: invert-animation 100s infinite step-end;
+    /* glitch animations */
+    .invert-animation {
+        animation: invert-animation 2s infinite;
     }
-    .foz {
-        animation: hide-animation 10s infinite step-end;
+    .hide-animation {
+        animation: hide-animation 1s infinite;
     }
-    .jon {
-        animation: blend-animation ($randomNumber1 + s) infinite step-end;
+    .blend-animation {
+        animation: blend-animation 2s infinite;
     }
-    .joey {
-        animation: skew-animation ($randomNumber1 + s) infinite step-end;
+    .blur-animation {
+        animation: blur-animation 2s infinite;
     }
-    .bill .glitch.red {
-        animation: clip-animation-1 ($randomNumber3 + s) infinite step-end;
+    .glitch.red {
+        opacity: 0;
     }
-    .bill .glitch.blue {
-        animation: clip-animation-2 ($randomNumber2 + s) infinite step-end;
+    .clip-animation .glitch.red {
+        opacity: 1;
+        animation: red-glitch-animation 2s infinite;
+    }
+    .glitch.blue {
+        opacity: 0;
+    }
+    .clip-animation .glitch.blue {
+        opacity: 1;
+        animation: blue-glitch-animation 2s infinite;
     }
 
     @keyframes invert-animation {
-        0% {
-            filter: invert(.85);
-        }
-        1% {
-            filter: invert(0);
-        }
-        8% {
-            filter: invert(.9);
-        }
-        9% {
-            filter: invert(0);
-        }
-        10% {
-            filter: invert(1);
-        }
-        11% {
-            filter: invert(0);
-        }
-        20% {
-            filter: invert(.9);
-        }
-        22% {
-            filter: invert(0);
-        }
-        23% {
-            filter: invert(1);
-        }
-        24% {
-            filter: invert(0);
-        }
-        50% {
-            filter: invert(.76);
-        }
-        51% {
-            filter: invert(0);
-        }
-        75% {
-            filter: invert(.86);
-        }
-        76% {
-            filter: invert(0);
-        }
-        100% {
-            filter: invert(0);
+        $steps:20;
+        @for $i from 0 through $steps {
+            #{percentage($i*(1/$steps))}{
+                filter: invert(random());
+            }
         }
     }
 
-    @keyframes skew-animation {
-        0% {
-            filter: blur(4px) saturate(.3);
-            transform: skew(10deg, 5deg);
-        }
-        5% {
-            filter: initial;
-            transform: initial;
+    @keyframes blur-animation {
+        $steps:20;
+        @for $i from 0 through $steps {
+            #{percentage($i*(1/$steps))}{
+                filter: blur(random(10)+px) saturate(random());
+            }
         }
     }
 
     @keyframes blend-animation {
-        0% {
-            mix-blend-mode: overlay;
-        }
-        5% {
-            mix-blend-mode: initial;
+        $steps:20;
+        @for $i from 0 through $steps {
+            #{percentage($i*(1/$steps))}{
+                $doBlend: random() < .5;
+                @if $doBlend {
+                    mix-blend-mode: overlay;
+                } @else {
+                    mix-blend-mode: initial;
+                }
+            }
         }
     }
 
     @keyframes scale-animation {
-        0% {
-            transform: scale(.9) translateY(-4px);
-            transform-origin: bottom center;
-        }
-        5% {
-            transform: initial;
+        $steps:20;
+        @for $i from 0 through $steps {
+            #{percentage($i*(1/$steps))}{
+                transform: scale(random());
+                transform-origin: bottom center;
+            }
         }
     }
 
     @keyframes hide-animation {
-        0% {
-            opacity: 0;
-        }
-        2% {
-            opacity: 1;
-        }
-    }
-
-    @keyframes clip-animation-1 {
         $steps:20;
         @for $i from 0 through $steps {
             #{percentage($i*(1/$steps))}{
-                filter: blur(2px);
-                clip:rect(random(1000)+px,9999px,random(1000)+px,0);
+                opacity: random();
             }
         }
     }
-    @keyframes clip-animation-2 {
+
+    @keyframes red-glitch-animation {
         $steps:20;
         @for $i from 0 through $steps {
             #{percentage($i*(1/$steps))}{
-                clip:rect(random(1000)+px,9999px,random(1000)+px,0);
+                clip-path: inset(percentage(random()) 100% percentage(random()) 100%);
+            }
+        }
+    }
+    @keyframes blue-glitch-animation {
+        $steps:20;
+        @for $i from 0 through $steps {
+            #{percentage($i*(1/$steps))}{
+                clip-path: inset(percentage(random()) 100% percentage(random()) 100%);
             }
         }
     }
