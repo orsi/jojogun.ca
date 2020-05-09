@@ -10,6 +10,7 @@ import Background from './background/Background';
 function App() {
   return (
     <div className="App">
+      <Header></Header>
       <Background></Background>
     </div>
   );
