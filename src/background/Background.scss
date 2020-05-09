@@ -8,8 +8,14 @@
     z-index: -1;
 
     .background-container {
-        position: relative;
         display: inline-block;
+        position: relative;
+        opacity: 0;
+        transform-origin: top left;
+        transition: opacity 250ms ease-in;
+        &.show {
+            opacity: 1;
+        }
     }
     .background-image-container {
         position: absolute;

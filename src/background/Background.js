@@ -9,13 +9,13 @@ import bill from './bill-1920.png';
 class Background extends Component {
 
   lastUpdate = new Date().getTime();
+  imageElements;
   isGlitching = false;
   currentGlitchElement;
   glitchElements = [];
 
   componentDidMount() {
-    this.setBackground();
-    window.addEventListener('resize', this.setBackground);
+    window.addEventListener('resize', this.initBackground);
 
     this.glitchElements.push(document.querySelector('.background-container'));
     this.glitchElements.push(document.querySelector('.foz'));
@@ -23,6 +23,18 @@ class Background extends Component {
     this.glitchElements.push(document.querySelector('.joey'));
     this.glitchElements.push(document.querySelector('.bill'));
     this.update();
+
+    // wait for images to load
+    this.imageElements = document.querySelectorAll('img');
+    let imagesLoaded = 0;
+    this.imageElements.forEach(image => {
+      image.addEventListener('load', () => {
+        imagesLoaded++;
+        if (imagesLoaded === this.imageElements.length) {
+          this.initBackground();
+        }
+      })
+    });
   }
 
   render() {
@@ -56,33 +68,38 @@ class Background extends Component {
     );
   }
 
-  setBackground() {
+  initBackground() {
     // calculate background size and scale for viewport
     let background = document.querySelector('.background-container');
+    let baleImage = document.querySelector('.background-bales');
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
     let windowRatio = windowWidth / windowHeight;
-    let backgroundWidth = 1920;
-    let backgroundHeight = 1280;
+    let backgroundWidth = baleImage.width;
+    let backgroundHeight = baleImage.height;
     let backgroundRatio = backgroundWidth / backgroundHeight;
 
-    let scale;
-    let translateX = 0;
-    let translateY = 0;
     if (windowRatio > backgroundRatio) {
       // scale by width
-      scale = windowWidth / backgroundWidth;
+      let scale = windowWidth / backgroundWidth;
       // translate Y
-      translateY = (windowHeight - (backgroundHeight * scale)) / 3.4;
+      let translateY = (windowHeight - (backgroundHeight * scale)) / 3.4;
+      background.style.transform = `scale(${scale})`;
+      background.style.top = `${translateY}px`;
+      background.style.left = `0`;
     } else {
       // scale by height
-      scale = windowHeight / backgroundHeight;
-      // translate X
-      translateX = (windowWidth - (backgroundWidth * scale)) * 1.11;
+       let scale = windowHeight / backgroundHeight;
+       let backgroundWidthScaled = backgroundWidth * scale;
+       let backgroundWidthOutOfView = backgroundWidthScaled - windowWidth;
+      // translate background image to focal center
+      let translateX = backgroundWidthOutOfView / 2 * 1.249;
+      background.style.transform = `scale(${scale})`;
+      background.style.top = `0`;
+      background.style.left = `-${translateX}px`;
     }
 
-    background.style.transformOrigin = `top left`;
-    background.style.transform = `scale(${scale}) translate(${translateX}px,${translateY}px)`;
+    background.classList.add('show');
   }
 
   update() {
