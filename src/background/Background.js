@@ -8,6 +8,38 @@ import bill from './bill-1920.png';
 
 class Background extends Component {
 
+  componentDidMount() {
+    this.setBackground();
+    this.glitch();
+
+    window.addEventListener('resize', this.setBackground);
+  }
+
+  render() {
+    return (
+      <div className="Background">
+        <div className="background-container">
+          
+          <img className="background-bales" src={bales} />
+          <div className="background-image-container joey">
+            <img className="image" src={joey} />
+          </div>
+          <div className="background-image-container jon">
+            <img className="image" src={jon} />
+          </div>
+          <div className="background-image-container foz">
+            <img className="image" src={foz} />
+          </div>
+          <div className="background-image-container bill">
+            <img className="image" src={bill} />
+            <img className="glitch red" src={bill} />
+            <img className="glitch blue" src={bill} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   setBackground() {
     // calculate background size and scale for viewport
     let background = document.querySelector('.background-container');
@@ -34,29 +66,17 @@ class Background extends Component {
       translateX = (windowWidth - (backgroundWidth * scale)) * 1.11;
     }
 
-    console.log(translateX, translateY);
     background.style.transformOrigin = `top left`;
     background.style.transform = `scale(${scale}) translate(${translateX}px,${translateY}px)`;
   }
 
-  componentDidMount() {
-    this.setBackground();
+  glitch() {
+    // let bill = document.querySelector('.background-bill');
+    // let copy = bill.cloneNode();
+    // console.log(bill, copy);
 
-    window.addEventListener('resize', this.setBackground);
-  }
-
-  render() {
-    return (
-      <div className="Background">
-        <div className="background-container">
-          <img className="background-bales" src={bales} />
-          <img className="background-joey" src={joey} />
-          <img className="background-jon" src={jon} />
-          <img className="background-foz" src={foz} />
-          <img className="background-bill" src={bill} />
-        </div>
-      </div>
-    );
+    // bill.parentNode.insertBefore(copy, bill);
+    // copy.style.
   }
 }
 

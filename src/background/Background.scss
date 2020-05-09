@@ -6,29 +6,169 @@
         position: relative;
         display: inline-block;
     }
-
-    .background-joey,
-    .background-jon,
-    .background-foz,
-    .background-bill {
+    .background-image-container {
         position: absolute;
     }
+    .glitch {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+    .glitch.red {
+        filter: saturate(10);
+    }
+    .glitch.blue {
+        filter: saturate(20) hue-rotate(200deg);
+    }
+    
+
     .background-bales {
     }
-    .background-joey {
+    .joey {
         top: 49.1%;
         left: 48.3%;
     }
-    .background-jon {
+    .jon {
         top: 41.2%;
         left: 38.4%;
     }
-    .background-foz {
+    .foz {
         top: 26%;
         left: 34.9%;
     }
-    .background-bill {
+    .bill {
         top: 9%;
         left: 71%;
+    }
+
+    $randomNumber1: random(10);
+    $randomNumber2: random(10);
+    $randomNumber3: random(10);
+    $randomNumber4: random(10);
+    $randomNumber5: random(10);
+    $randomNumber6: random(10);
+    .background-container {
+        animation: invert-animation 100s infinite step-end;
+    }
+    .foz {
+        animation: hide-animation 10s infinite step-end;
+    }
+    .jon {
+        animation: blend-animation ($randomNumber1 + s) infinite step-end;
+    }
+    .joey {
+        animation: skew-animation ($randomNumber1 + s) infinite step-end;
+    }
+    .bill .glitch.red {
+        animation: clip-animation-1 ($randomNumber3 + s) infinite step-end;
+    }
+    .bill .glitch.blue {
+        animation: clip-animation-2 ($randomNumber2 + s) infinite step-end;
+    }
+
+    @keyframes invert-animation {
+        0% {
+            filter: invert(.85);
+        }
+        1% {
+            filter: invert(0);
+        }
+        8% {
+            filter: invert(.9);
+        }
+        9% {
+            filter: invert(0);
+        }
+        10% {
+            filter: invert(1);
+        }
+        11% {
+            filter: invert(0);
+        }
+        20% {
+            filter: invert(.9);
+        }
+        22% {
+            filter: invert(0);
+        }
+        23% {
+            filter: invert(1);
+        }
+        24% {
+            filter: invert(0);
+        }
+        50% {
+            filter: invert(.76);
+        }
+        51% {
+            filter: invert(0);
+        }
+        75% {
+            filter: invert(.86);
+        }
+        76% {
+            filter: invert(0);
+        }
+        100% {
+            filter: invert(0);
+        }
+    }
+
+    @keyframes skew-animation {
+        0% {
+            filter: blur(4px) saturate(.3);
+            transform: skew(10deg, 5deg);
+        }
+        5% {
+            filter: initial;
+            transform: initial;
+        }
+    }
+
+    @keyframes blend-animation {
+        0% {
+            mix-blend-mode: overlay;
+        }
+        5% {
+            mix-blend-mode: initial;
+        }
+    }
+
+    @keyframes scale-animation {
+        0% {
+            transform: scale(.9) translateY(-4px);
+            transform-origin: bottom center;
+        }
+        5% {
+            transform: initial;
+        }
+    }
+
+    @keyframes hide-animation {
+        0% {
+            opacity: 0;
+        }
+        2% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes clip-animation-1 {
+        $steps:20;
+        @for $i from 0 through $steps {
+            #{percentage($i*(1/$steps))}{
+                filter: blur(2px);
+                clip:rect(random(1000)+px,9999px,random(1000)+px,0);
+            }
+        }
+    }
+    @keyframes clip-animation-2 {
+        $steps:20;
+        @for $i from 0 through $steps {
+            #{percentage($i*(1/$steps))}{
+                clip:rect(random(1000)+px,9999px,random(1000)+px,0);
+            }
+        }
     }
 }
