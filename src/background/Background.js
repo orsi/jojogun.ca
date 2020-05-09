@@ -41,6 +41,8 @@ class Background extends Component {
     return (
       <div className="Background">
         <div className="background-container">
+          <div className="scan-lines"></div>
+          <div className="distortion"></div>
           
           <img className="background-bales" src={bales} />
           <div className="background-image-container foz">
