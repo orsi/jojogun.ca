@@ -150,6 +150,8 @@ class Background extends Component {
             case 4:
               this.currentGlitchElement.classList.add('clip-animation');
               break;
+            default:
+              break;
           }
           this.isGlitching = true;
         }
