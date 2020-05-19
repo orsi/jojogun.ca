@@ -15,30 +15,35 @@ class SocialMediaList extends Component {
         <ul>
           <li>
             <a target="_blank"
+             rel="noopener noreferrer"
             href="https://www.facebook.com/jojogunandthebullets/">
               <FontAwesomeIcon icon={faFacebookF} />
             </a>
           </li>
           <li>
             <a target="_blank"
+             rel="noopener noreferrer"
             href="https://www.instagram.com/jojogunandthebullets/">
               <FontAwesomeIcon icon={faInstagram} />
             </a>
           </li>
           <li>
             <a target="_blank"
+             rel="noopener noreferrer"
             href="https://jojogun.bandcamp.com/">
               <FontAwesomeIcon icon={faBandcamp} />
             </a>
           </li>
           <li>
             <a target="_blank"
+             rel="noopener noreferrer"
             href="https://open.spotify.com/artist/6FavMhIklkpnPvpF1BCBTw">
               <FontAwesomeIcon icon={faSpotify} />
             </a>
           </li>
           <li>
             <a target="_blank"
+             rel="noopener noreferrer"
             href="https://music.apple.com/us/artist/jojo-gun-the-bullets/1273330845">
               <FontAwesomeIcon icon={faApple} />
             </a>
