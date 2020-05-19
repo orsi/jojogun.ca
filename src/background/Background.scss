@@ -163,20 +163,33 @@
             }
         }
     }
-
     @keyframes red-glitch-animation {
         $steps:20;
         @for $i from 0 through $steps {
+            $top: percentage(random());
+            $bottom: percentage(random());
             #{percentage($i*(1/$steps))}{
-                clip-path: inset(percentage(random()) 100% percentage(random()) 100%);
+                clip-path: polygon(
+                    0 $top, 
+                    100% $top, 
+                    100% $bottom, 
+                    0 $bottom
+                );
             }
         }
     }
     @keyframes blue-glitch-animation {
         $steps:20;
         @for $i from 0 through $steps {
+            $top: percentage(random());
+            $bottom: percentage(random());
             #{percentage($i*(1/$steps))}{
-                clip-path: inset(percentage(random()) 100% percentage(random()) 100%);
+                clip-path: polygon(
+                    0 $top, 
+                    100% $top, 
+                    100% $bottom, 
+                    0 $bottom
+                );
             }
         }
     }
