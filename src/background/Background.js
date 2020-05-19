@@ -44,26 +44,26 @@ class Background extends Component {
           <div className="scan-lines"></div>
           <div className="distortion"></div>
           
-          <img className="background-bales" src={bales} />
+          <img alt="" className="background-bales" src={bales} />
           <div className="background-image-container foz">
-            <img className="image" src={foz} />
-            <img className="glitch red" src={foz} />
-            <img className="glitch blue" src={foz} />
+            <img alt="" className="image" src={foz} />
+            <img alt="" className="glitch red" src={foz} />
+            <img alt="" className="glitch blue" src={foz} />
           </div>
           <div className="background-image-container jon">
-            <img className="image" src={jon} />
-            <img className="glitch red" src={jon} />
-            <img className="glitch blue" src={jon} />
+            <img alt="" className="image" src={jon} />
+            <img alt="" className="glitch red" src={jon} />
+            <img alt="" className="glitch blue" src={jon} />
           </div>
           <div className="background-image-container joey">
-            <img className="image" src={joey} />
-            <img className="glitch red" src={joey} />
-            <img className="glitch blue" src={joey} />
+            <img alt="" className="image" src={joey} />
+            <img alt="" className="glitch red" src={joey} />
+            <img alt="" className="glitch blue" src={joey} />
           </div>
           <div className="background-image-container bill">
-            <img className="image" src={bill} />
-            <img className="glitch red" src={bill} />
-            <img className="glitch blue" src={bill} />
+            <img alt="" className="image" src={bill} />
+            <img alt="" className="glitch red" src={bill} />
+            <img alt="" className="glitch blue" src={bill} />
           </div>
         </div>
       </div>
