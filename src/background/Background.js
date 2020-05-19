@@ -116,9 +116,9 @@ class Background extends Component {
         let shouldStopGlitch = Math.random() < .5;
         if (shouldStopGlitch) {
           // remove all glitch animations
-          this.currentGlitchElement.classList.remove('invert-animation');
+          this.currentGlitchElement.classList.remove('gray-animation');
           this.currentGlitchElement.classList.remove('hide-animation');
-          this.currentGlitchElement.classList.remove('blend-animation');
+          this.currentGlitchElement.classList.remove('triangle-animation');
           this.currentGlitchElement.classList.remove('blur-animation');
           this.currentGlitchElement.classList.remove('clip-animation');
           this.isGlitching = false;
@@ -136,13 +136,13 @@ class Background extends Component {
           let randGlitchAnimation = Math.floor(Math.random() * 5);
           switch (randGlitchAnimation) {
             case 0:
-              this.currentGlitchElement.classList.add('invert-animation');
+              this.currentGlitchElement.classList.add('gray-animation');
               break;
             case 1:
               this.currentGlitchElement.classList.add('hide-animation');
               break;
             case 2:
-              this.currentGlitchElement.classList.add('blend-animation');
+              this.currentGlitchElement.classList.add('triangle-animation');
               break;
             case 3:
               this.currentGlitchElement.classList.add('blur-animation');

@@ -86,14 +86,14 @@
     }
 
     /* glitch animations */
-    .invert-animation {
-        animation: invert-animation 2s infinite;
+    .gray-animation {
+        animation: gray-animation 2s infinite;
     }
     .hide-animation {
         animation: hide-animation 1s infinite;
     }
-    .blend-animation {
-        animation: blend-animation 2s infinite;
+    .triangle-animation {
+        animation: triangle-animation 2s infinite;
     }
     .blur-animation {
         animation: blur-animation 2s infinite;
@@ -113,11 +113,16 @@
         animation: blue-glitch-animation 2s infinite;
     }
 
-    @keyframes invert-animation {
+    @keyframes gray-animation {
         $steps:20;
         @for $i from 0 through $steps {
+            $doAnimation: random();
             #{percentage($i*(1/$steps))}{
-                filter: invert(random());
+                @if ($doAnimation < .5) {
+                    filter: saturate(0);
+                } @else {
+                    filter: saturate(1);
+                }
             }
         }
     }
@@ -126,21 +131,21 @@
         $steps:20;
         @for $i from 0 through $steps {
             #{percentage($i*(1/$steps))}{
-                filter: blur(random(10)+px) saturate(random());
+                filter: blur(random(20)+px);
             }
         }
     }
 
-    @keyframes blend-animation {
+    @keyframes triangle-animation {
         $steps:20;
         @for $i from 0 through $steps {
             #{percentage($i*(1/$steps))}{
-                $doBlend: random() < .5;
-                @if $doBlend {
-                    mix-blend-mode: overlay;
-                } @else {
-                    mix-blend-mode: initial;
-                }
+                clip-path: polygon(
+                    percentage(random()) percentage(random()), 
+                    percentage(random()) percentage(random()), 
+                    percentage(random()) percentage(random()), 
+                    percentage(random()) percentage(random())
+                );
             }
         }
     }
